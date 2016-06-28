@@ -1,0 +1,13 @@
+<section>
+    <h3>The Section title:</h3>
+    <br /><br />
+    <h3 *ngIf = "mediaItems">Items Check</h3>
+    <my-media-item
+        *ngFor = "let item of mediaItems"
+        [Movie] = "item"
+        (deleted)="onMediaItemDeleted($event)">loading... {{ item.name }}</my-media-item>
+<br />
+<hr />
+    <h3 *ngIf = "mediaItems">Items 2 Check</h3>
+ <div *ngFor="let film of mediaItems" >loading... {{ film.name }}</div>
+</section>
