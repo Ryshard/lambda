@@ -1,3 +1,7 @@
+<heading>
+    <div [innerHTML] = "mediaItems | catList " >
+    </div>
+</heading>
 <section>
     <h3>The Section title:</h3>
     <br /><br />
@@ -5,6 +9,7 @@
     <my-media-item
         *ngFor = "let item of mediaItems"
         [Movie] = "item"
+        [ngClass] = "{'medium-movies': item.medium==='Movies', 'medium-series': item.medium ==='Series'}"
         (deleted)="onMediaItemDeleted($event)">loading... {{ item.name }}</my-media-item>
 <br />
 <hr />
