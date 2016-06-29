@@ -15,8 +15,8 @@
             <input type="text" name="name" id="name" required 
                ngControl="name" 
                #name="ngForm" >
-               <div *ngIf="name.errors" >
-                   Name is Invalid
+               <div *ngIf="name.errors?.pattern" class="error">
+                   Name has Invalid Characters
                </div>
         </li>
         <li>
@@ -36,7 +36,11 @@
             ngControl="year"
             #year = "ngForm"
             >
-            <div *ngIf="year.errors" >Year is Invalid</div>
+            <div *ngIf="year.errors?.year" class="error" >
+                must be between {{year.errors?.year.min }} and {{ year.errors?.year.max }}
+                Year you have entered is <b>{{year.errors?.year.msg}}</b>
+
+            </div>
         </li>
     </ul>
     <button type="submit" [disabled]="!form.valid">Save</button>

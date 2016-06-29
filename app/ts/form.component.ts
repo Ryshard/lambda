@@ -41,10 +41,15 @@ export class FormComponent {
         }
         else{
             var errors = {};
+            var msg = 'to Late';
+            if(year < minYear)
+            {
+                msg = 'to Early';
+            }
 
 
-            return {'year' : '111', };// form in-valid
-        }
+            return {'year' : { 'min': minYear, 'max': maxyear, 'msg':msg} };// form in-valid
+        } 
         
     }
 
