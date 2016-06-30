@@ -1,5 +1,5 @@
 <h2> The Movie: </h2>
-<h2>{{ mediaItem.name | slice: 2 : 10 }}</h2>
+<h2>{{ mediaItem.name }}</h2>
 <div *ngIf="mediaItem.watchedOn !== null">Watched: {{ isWatched() }}</div>
 <div *ngIf="mediaItem.watchedOn !== null">Watched On: {{ mediaItem.watchedOn | date: 'shortDate' }}</div>
 <!-- template element is not visible in DOM -->

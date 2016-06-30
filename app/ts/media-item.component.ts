@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
+import {Component, enableProdMode, Input, Output, EventEmitter} from 'angular2/core';
 import {FavoriteDirective} from './favorite.directive';
 
 @Component({
@@ -21,11 +21,10 @@ export class MediaItemComponent {
 
     onDelete() {
         this.delete.emit(this.mediaItem);
-        console.log('Deleting object.............');
+        
     }
 
 
 
 
 }
-

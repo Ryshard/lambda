@@ -1,22 +1,17 @@
-import {Component, Inject} from 'angular2/core';
-import {Control, Validators, FormBuilder} from 'angular2/common';
-import { MediaItemService } from './media-item.service';
+import {Component} from 'angular2/core';
+import {ControlGroup, Control, Validators} from 'angular2/common';
 
 @Component({
     selector: 'the-form',
     templateUrl: 'app/templates/form.component.html',
-    styleUrls: ['app/css/form.component.css'],
- 
+    styleUrls: ['app/css/form.component.css']
 })
 export class FormComponent {
 
-    form;
+    form :ControlGroup;
 
-    constructor(private formBuilder: FormBuilder, 
-    private mediaService:MediaItemService,
-    @Inject('LOOKUP_LISTS') public lookupLists ) { }
     ngOnInit() {
-        this.form =this.formBuilder.group({
+        this.form = new ControlGroup({
             'medium':   new Control('Movies'), // movies default value
             'name':     new Control('', Validators.compose([
                 Validators.required,
@@ -60,7 +55,12 @@ export class FormComponent {
 
 
 
+
+
+
+
+
     submitingData(data){
-        this.mediaService.add(data);
+        console.log(data);
     }
 }
