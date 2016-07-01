@@ -1,8 +1,33 @@
+import { Http } from 'angular2/http';
+import { Injectable } from 'angular2/core';
+import 'rxjs/add/operator/map';
+
+@Injectable() 
 export class MediaItemService {
    
+   constructor(private http: Http) {}
 
     get() {
-        return this.mediaItems;
+        
+        var resp = this.http.get('mediaitems');
+       // console.log(resp);
+        var itemsObject = resp.map(response=>{
+            console.log(response.json());
+            return response.json().mediaItems;
+        });
+     //   console.log(itemsObject);
+         return itemsObject;
+        
+
+        /*
+        return  this.http.get('mediaitems')
+        .map(response=>{
+            return response.json().mediaItems;
+        });
+      */
+       //
+
+      // return this.mediaItems; // Old method - static
     }
 
     add(mediaItem){

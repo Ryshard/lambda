@@ -1,7 +1,7 @@
 import {Component, Inject} from 'angular2/core';
 import {Control, Validators, FormBuilder} from 'angular2/common';
 import { MediaItemService } from './media-item.service';
-
+import { MOVIE_CAT_LIST } from './myProviders';
 @Component({
     selector: 'the-form',
     templateUrl: 'app/templates/form.component.html',
@@ -14,7 +14,8 @@ export class FormComponent {
 
     constructor(private formBuilder: FormBuilder, 
     private mediaService:MediaItemService,
-    @Inject('LOOKUP_LISTS') public lookupLists ) { }
+    @Inject('LOOKUP_LISTS') public lookupLists,
+    @Inject(MOVIE_CAT_LIST) public catList ) { }
     ngOnInit() {
         this.form =this.formBuilder.group({
             'medium':   new Control('Movies'), // movies default value

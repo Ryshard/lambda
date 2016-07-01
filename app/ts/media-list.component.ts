@@ -18,7 +18,16 @@ export class MediaItemListComponent {
     }     
 
     ngOnInit(){
-        this.mediaItems = this.mediaService.get();
+        this.mediaService.get().subscribe(
+            mediaItems=>{
+             //   console.log('mmi');
+             //   console.log(mediaItems);
+                this.mediaItems = mediaItems;
+            }
+        );
+
+
+        //  this.mediaItems = this.mediaService.get();
     }
 
     onMediaItemDeleted(mediaItem) {

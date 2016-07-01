@@ -22,7 +22,7 @@
         <li>
             <label for="category">Category</label>
             <select name="category" id="category" ngControl="category">
-                <option *ngFor="let cat of lookupLists.cats" value="{{ cat | lowercase}}">{{ cat }}</option>
+                <option *ngFor="let cat of catList" value="{{ cat | lowercase}}">{{ cat }}</option>
                 
             </select>
         </li>

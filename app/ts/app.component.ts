@@ -6,8 +6,8 @@ import {FormComponent} from './form.component';
 @Component({
     selector: 'my-app',
     templateUrl: 'app/templates/app.component.html',
-    directives: [MediaItemComponent, MediaItemListComponent, FormComponent]
-   // styleUrls: [`app/css/app.component.css`]
+    directives: [MediaItemComponent, MediaItemListComponent, FormComponent],
+    styleUrls: [`app/css/app.component.css`]
 })
 export class AppComponent {
         onMediaDeletedItem(){
