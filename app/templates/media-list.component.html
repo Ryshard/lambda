@@ -12,20 +12,19 @@
 </nav>
 -->
 <heading>
-    <div [innerHTML] = "mediaItems | catList " >
-    </div>
+    <h3>Categories List:</h3>
+   <div [innerHTML] = "mediaItems | catList " >   </div>
 </heading>
 <section>
-    <h3>The Section title:</h3>
+    
     <br /><br />
-    <h3 *ngIf = "mediaItems">Items Check</h3>
+   <!-- <h3 *ngIf = "mediaItems">Items Check</h3> -->
     <my-media-item
         *ngFor = "#item of mediaItems"
         [Movie] = "item"
         [ngClass] = "{'medium-movies': item.medium==='Movies', 'medium-series': item.medium ==='Series'}"
         (deleted)="onMediaItemDeleted($event)">loading... {{ item.name }}</my-media-item>
-<br />
-<hr />
+
 <!--
     <h3 *ngIf = "mediaItems">Items 2 Check</h3>
  <div *ngFor="#film of mediaItems" >loading... {{ film.name }}</div>

@@ -2,6 +2,9 @@ import {Component, Inject} from 'angular2/core';
 import {Control, Validators, FormBuilder} from 'angular2/common';
 import { MediaItemService } from './media-item.service';
 import { MOVIE_CAT_LIST } from './myProviders';
+import {Router} from 'angular2/router';
+
+
 @Component({
     selector: 'the-form',
     templateUrl: 'app/templates/form.component.html',
@@ -15,7 +18,11 @@ export class FormComponent {
     constructor(private formBuilder: FormBuilder, 
     private mediaService:MediaItemService,
     @Inject('LOOKUP_LISTS') public lookupLists,
-    @Inject(MOVIE_CAT_LIST) public catList ) { }
+    @Inject(MOVIE_CAT_LIST) public catList,
+    private myRouter:Router
+    ) { }
+
+
     ngOnInit() {
         this.form =this.formBuilder.group({
             'medium':   new Control('Movies'), // movies default value
@@ -64,5 +71,6 @@ export class FormComponent {
     submitingData(data){
        // this.mediaService.add(data);
        this.mediaService.add(data).subscribe();
+       this.myRouter.navigate(['../List', {medium: data.medium }])
     }
 }
