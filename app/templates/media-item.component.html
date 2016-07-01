@@ -1,7 +1,8 @@
-<h2> The Movie: </h2>
 <h2>{{ mediaItem.name }}</h2>
+<div *ngIf="mediaItem.medium !== null">Medium: {{ mediaItem.medium }}</div>
 <div *ngIf="mediaItem.watchedOn !== null">Watched: {{ isWatched() }}</div>
 <div *ngIf="mediaItem.watchedOn !== null">Watched On: {{ mediaItem.watchedOn | date: 'shortDate' }}</div>
+
 <!-- template element is not visible in DOM -->
 <template [ngIf] = "mediaItem.type != null">
     <div>

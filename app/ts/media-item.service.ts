@@ -13,7 +13,7 @@ export class MediaItemService {
     get(medium) {
 
         var searchParams = new URLSearchParams();
-        searchParams.append('medium',medium)
+        searchParams.append('medium', medium );
         var resp = this.http.get('mediaitems', {search: searchParams});
       
         var itemsObject = resp.map(response=>{
@@ -29,7 +29,6 @@ export class MediaItemService {
             return response.json().mediaItems;
         });
       */
-       //
 
       // return this.mediaItems; // Old method - static
     }
@@ -40,7 +39,7 @@ export class MediaItemService {
        return this.http.post(
            'mediaitems',
            JSON.stringify(mediaItem), 
-           {headers:myHeaders}
+           { headers : myHeaders } // options object
        ).map(response => { })
       
 
@@ -55,7 +54,8 @@ export class MediaItemService {
     }
 
     delete(mediaItem){
-        return this.http.delete(mediaItem);
+        return this.http.delete(`mediaItem/${mediaItem.id}`)
+        .map( response => {});
 /*
         var index:number = this.mediaItems.indexOf(mediaItem);
 
@@ -65,7 +65,7 @@ export class MediaItemService {
  */
 
     }
-    
+
 
      mediaItems = [
         {
