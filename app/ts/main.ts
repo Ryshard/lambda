@@ -5,6 +5,7 @@ import { provide } from 'angular2/core';
 import { MOVIE_CAT_LIST, cats } from './myProviders';
 import { HTTP_PROVIDERS, XHRBackend } from 'angular2/http';
 import {MockXHRBackend} from './mock-xhr-backend';
+import { ROUTER_PROVIDERS } from 'angular2/router';
 
 var lookupListss = {
     mediums: ['Movies', 'Series'],
@@ -15,5 +16,6 @@ bootstrap(AppComponent, [ // Array of providers
     provide('LOOKUP_LISTS', { useValue: lookupListss }),
     provide(MOVIE_CAT_LIST, { useValue: cats }),
     HTTP_PROVIDERS,
-    provide(XHRBackend, { useClass: MockXHRBackend })
+    provide(XHRBackend, { useClass: MockXHRBackend }),
+    ROUTER_PROVIDERS
 ]);

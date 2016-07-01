@@ -1,7 +1,21 @@
+<nav>
+    <a [routerLink]="['./List', { medium: '' }]">
+        <img src="media/04.png" class="icon" />
+    </a>
+    <a [routerLink]="['./List', { medium: 'Movies' }]">
+        <img src="media/03.png" class="icon" />
+    </a>
+    <a [routerLink]="['./List', { medium: 'Series' }]">
+        <img src="media/02.png" class="icon" />
+    </a>
+</nav>
+
 
 <h1>Angular 2 Template</h1>
-<p>Something</p>
+<p>App Component Intro</p>
+<router-outlet></router-outlet>
+<anything></anything>
+<!--
 <the-form></the-form>
-
 <media-list></media-list>
-
+-->

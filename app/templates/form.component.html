@@ -6,7 +6,7 @@
         <li>
             <label for="medium">Medium</label>
             <select name="medium" id="medium" required ngControl="medium">
-                <option *ngFor="let med of lookupLists.mediums" value="{{med | lowercase }}">{{med}}</option>
+                <option *ngFor="#med of lookupLists.mediums" value="{{med | lowercase }}">{{med}}</option>
               
             </select>
         </li>
@@ -22,7 +22,7 @@
         <li>
             <label for="category">Category</label>
             <select name="category" id="category" ngControl="category">
-                <option *ngFor="let cat of catList" value="{{ cat | lowercase}}">{{ cat }}</option>
+                <option *ngFor="#cat of catList" value="{{ cat | lowercase}}">{{ cat }}</option>
                 
             </select>
         </li>

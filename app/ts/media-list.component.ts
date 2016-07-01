@@ -2,10 +2,12 @@ import {Component} from 'angular2/core';
 import {MediaItemComponent} from './media-item.component';
 import {CatListPipe} from './category-list.pipe';
 import { MediaItemService } from './media-item.service';
+import { RouteParams, ROUTER_DIRECTIVES } from 'angular2/router';
+
 
 @Component({
     selector: 'media-list',
-    directives: [MediaItemComponent],
+    directives: [MediaItemComponent, ROUTER_DIRECTIVES],
     templateUrl: 'app/templates/media-list.component.html',
     styleUrls: ['app/css/media-list.component.css'],
     pipes : [CatListPipe],
@@ -14,11 +16,12 @@ import { MediaItemService } from './media-item.service';
 export class MediaItemListComponent {
     medium = '';
     mediaItems = [];
-    constructor (private mediaService:MediaItemService){
-       
-    }     
+    constructor( private mediaService:MediaItemService,
+        private routeParams:RouteParams
+    ){ }     
 
     ngOnInit(){
+        this.medium = this.routeParams.get('medium');
         this.getMediaItems(this.medium);
         //  this.mediaItems = this.mediaService.getStatic();
     }

@@ -1,3 +1,4 @@
+<!--
 <nav>
     <a (click)="getMediaItems('')" title="All Movies" >
         <img src="media/04.png" class="icon" />
@@ -9,6 +10,7 @@
         <img src="media/02.png" class="icon" />
     </a>
 </nav>
+-->
 <heading>
     <div [innerHTML] = "mediaItems | catList " >
     </div>
@@ -18,12 +20,20 @@
     <br /><br />
     <h3 *ngIf = "mediaItems">Items Check</h3>
     <my-media-item
-        *ngFor = "let item of mediaItems"
+        *ngFor = "#item of mediaItems"
         [Movie] = "item"
         [ngClass] = "{'medium-movies': item.medium==='Movies', 'medium-series': item.medium ==='Series'}"
         (deleted)="onMediaItemDeleted($event)">loading... {{ item.name }}</my-media-item>
 <br />
 <hr />
+<!--
     <h3 *ngIf = "mediaItems">Items 2 Check</h3>
- <div *ngFor="let film of mediaItems" >loading... {{ film.name }}</div>
+ <div *ngFor="#film of mediaItems" >loading... {{ film.name }}</div>
+ -->
 </section>
+
+<footer>
+    <a [routerLink]="['../AddMediaItem']">
+        <img src="media/01.png" class="icon">
+    </a>
+</footer>
