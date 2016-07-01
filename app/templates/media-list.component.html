@@ -1,3 +1,14 @@
+<nav>
+    <a (click)="getMediaItems('')" title="All Movies" >
+        <img src="media/04.png" class="icon" />
+    </a>
+    <a (click)="getMediaItems('Movies')" title="Movies">
+        <img src="media/03.png" class="icon" />
+    </a>
+    <a (click)="getMediaItems('Series')" title="Series">
+        <img src="media/02.png" class="icon" />
+    </a>
+</nav>
 <heading>
     <div [innerHTML] = "mediaItems | catList " >
     </div>

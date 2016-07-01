@@ -1,4 +1,4 @@
-import { Http } from 'angular2/http';
+import { Http, URLSearchParams, Headers } from 'angular2/http';
 import { Injectable } from 'angular2/core';
 import 'rxjs/add/operator/map';
 
@@ -6,22 +6,26 @@ import 'rxjs/add/operator/map';
 export class MediaItemService {
    
    constructor(private http: Http) {}
+   getStatic() {
+       return this.mediaItems; // Old method - static
+   }
 
-    get() {
-        
-        var resp = this.http.get('mediaitems');
-       // console.log(resp);
+    get(medium) {
+
+        var searchParams = new URLSearchParams();
+        searchParams.append('medium',medium)
+        var resp = this.http.get('mediaitems', {search: searchParams});
+      
         var itemsObject = resp.map(response=>{
-            console.log(response.json());
-            return response.json().mediaItems;
+             return response.json().mediaItems;
         });
-     //   console.log(itemsObject);
+    
          return itemsObject;
         
 
         /*
         return  this.http.get('mediaitems')
-        .map(response=>{
+        .map(response => {
             return response.json().mediaItems;
         });
       */
@@ -31,25 +35,35 @@ export class MediaItemService {
     }
 
     add(mediaItem){
+
+       var myHeaders = new Headers({'Content-Type': 'application/json'});
+       return this.http.post(
+           'mediaitems',
+           JSON.stringify(mediaItem), 
+           {headers:myHeaders}
+       ).map(response => { })
+      
+
+
+        /* OLD 
       console.log( this.mediaItems );
       console.log(mediaItem);
       this.mediaItems.push(mediaItem);
       console.log( this.mediaItems );
-
+      */
        
     }
 
     delete(mediaItem){
-      //  console.log('Deleting object.............');
-      //  console.log(mediaItem);
-      
+        return this.http.delete(mediaItem);
+/*
         var index:number = this.mediaItems.indexOf(mediaItem);
-        //console.log(index);
 
         if(index >=0 ){
             this.mediaItems.splice(index,1);
         }
- 
+ */
+
     }
 
      mediaItems = [

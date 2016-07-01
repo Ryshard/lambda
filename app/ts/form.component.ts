@@ -62,6 +62,7 @@ export class FormComponent {
 
 
     submitingData(data){
-        this.mediaService.add(data);
+       // this.mediaService.add(data);
+       this.mediaService.add(data).subscribe();
     }
 }

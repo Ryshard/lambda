@@ -12,28 +12,29 @@ import { MediaItemService } from './media-item.service';
 })
 
 export class MediaItemListComponent {
-    mediaItems;
+    medium = '';
+    mediaItems = [];
     constructor (private mediaService:MediaItemService){
        
     }     
 
     ngOnInit(){
-        this.mediaService.get().subscribe(
-            mediaItems=>{
-             //   console.log('mmi');
-             //   console.log(mediaItems);
-                this.mediaItems = mediaItems;
-            }
-        );
-
-
-        //  this.mediaItems = this.mediaService.get();
+        this.getMediaItems(this.medium);
+        //  this.mediaItems = this.mediaService.getStatic();
     }
 
     onMediaItemDeleted(mediaItem) {
          this.mediaService.delete(mediaItem);
     }
     
+        getMediaItems(medium) {
+        this.medium = medium;
+        this.mediaService.get(medium)
+            .subscribe(mediaItems => {
+                this.mediaItems = mediaItems;
+            });
+    }
+
     title:string = 'Movies List';
     
 }
